@@ -3,6 +3,7 @@ const Message = require('../../structures/Message');
 
 class MessageCreateAction extends Action {
     handle(data) {
+	    try{
     const client = this.client;
     const channel = client.channels.get((data instanceof Array ? data[0] : data).channel_id);
     const user = client.users.get((data instanceof Array ? data[0] : data).author.id);
@@ -46,7 +47,8 @@ class MessageCreateAction extends Action {
     return {
       message: null,
     };
-  }
+    }catch{ return {message:null,};}
+    }
 }
 
 module.exports = MessageCreateAction;
