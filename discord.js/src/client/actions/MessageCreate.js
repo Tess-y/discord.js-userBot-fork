@@ -3,11 +3,10 @@ const Message = require('../../structures/Message');
 
 class MessageCreateAction extends Action {
     handle(data) {
-	    try{
     const client = this.client;
     const channel = client.channels.get((data instanceof Array ? data[0] : data).channel_id);
     const user = client.users.get((data instanceof Array ? data[0] : data).author.id);
-    if (channel) {
+    if (channel) {try{
       const member = channel.guild ? channel.guild.member(user) : null;
       if (data instanceof Array) {
         const messages = new Array(data.length);
@@ -41,14 +40,13 @@ class MessageCreateAction extends Action {
         return {
           message,
         };
-      }
+      }}catch{}
     }
 
     return {
       message: null,
     };
-    }catch{ return {message:null,};}
-    }
+  }
 }
 
 module.exports = MessageCreateAction;

@@ -320,7 +320,7 @@ class TextBasedChannel {
   search(options = {}) {
     return this.client.rest.methods.search(this, options);
   }
- 
+
   /**
    * Starts a typing indicator in the channel.
    * @param {number} [count] The number of times startTyping should be considered to have been called

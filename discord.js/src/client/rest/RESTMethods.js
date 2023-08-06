@@ -68,7 +68,7 @@ class RESTMethods {
     }));
   }
 
-  sendMessage(channel, content, { tts, nonce, embed, disableEveryone, split, code, reply, ref, mentions } = {}, files = null) {
+  sendMessage(channel, content, { tts, nonce, embed, disableEveryone, split, code, reply,  ref, mentions} = {}, files = null) {
     return new Promise((resolve, reject) => { // eslint-disable-line complexity
       if (typeof content !== 'undefined') content = this.client.resolver.resolveString(content);
 
@@ -123,10 +123,9 @@ class RESTMethods {
             }).catch(reject);
           }(content, 0));
         } else {
-		console.log("sending");
           this.rest.makeRequest('post', Endpoints.Channel(chan).messages, true, {
             content, tts, nonce, embed,message_reference: ref, allowed_mentions: mentions,
-          }, files).then(data => resolve(this.client.actions.MessageCreate.handle(data).message), reject);
+          }, files).then(data => {resolve(this.client.actions.MessageCreate.handle(data).message);console.log(data);}, reject);
         }
       };
 
