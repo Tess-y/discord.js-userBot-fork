@@ -1,6 +1,5 @@
 const GuildChannel = require('./GuildChannel');
 const Collection = require('../util/Collection');
-const Collection = require('../util/Collection');
 const TextBasedChannel = require('./interfaces/TextBasedChannel');
 const Permissions = require('../util/Permissions');
 

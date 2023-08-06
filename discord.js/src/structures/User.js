@@ -17,7 +17,6 @@ class User {
      * @readonly
      */
     Object.defineProperty(this, 'client', { value: client });
-
     if (data) this.setup(data);
   }
 
@@ -33,6 +32,12 @@ class User {
      * @type {string}
      */
     this.username = data.username;
+    
+    /**
+     *
+     *
+     */
+    this.displayname = data.global_name ? data.global_name : data.username;
 
     /**
      * A discriminator based on username for the user
