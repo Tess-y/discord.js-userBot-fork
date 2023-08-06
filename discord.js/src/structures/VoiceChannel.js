@@ -1,5 +1,7 @@
 const GuildChannel = require('./GuildChannel');
 const Collection = require('../util/Collection');
+const Collection = require('../util/Collection');
+const TextBasedChannel = require('./interfaces/TextBasedChannel');
 const Permissions = require('../util/Permissions');
 
 /**
@@ -15,6 +17,8 @@ class VoiceChannel extends GuildChannel {
      * @type {Collection<Snowflake, GuildMember>}
      */
     this.members = new Collection();
+    this.messages = new Collection();
+    this._typing = new Map();
 
     this.type = 'voice';
   }
@@ -142,5 +146,6 @@ class VoiceChannel extends GuildChannel {
     if (connection && connection.channel.id === this.id) connection.disconnect();
   }
 }
+TextBasedChannel.applyToClass(VoiceChannel, true);
 
 module.exports = VoiceChannel;

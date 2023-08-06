@@ -65,6 +65,8 @@ module.exports = {
   Role: require('./structures/Role'),
   StoreChannel: require('./structures/StoreChannel'),
   TextChannel: require('./structures/TextChannel'),
+  TextChannel: require('./structures/TextChannel'),
+  ThreadChannel: require('./structures/ThreadChannel'),
   User: require('./structures/User'),
   VoiceChannel: require('./structures/VoiceChannel'),
   Webhook: require('./structures/Webhook'),
